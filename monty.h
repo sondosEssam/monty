@@ -44,4 +44,5 @@ void free_inst(instruction_t **point);
 void free_stack(stack_t **stack);
 void mallochandling();
 int _isspace(char *line);
+void handleWrongPush(instruction_t *p, stack_t **s, int N, int c, FILE *o);
 #endif /* MONTY_H */

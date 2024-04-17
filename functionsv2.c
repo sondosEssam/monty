@@ -1,52 +1,54 @@
 #include"monty.h"
-void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
+/**
+ * mainPart - basiclly the main fubciton
+ * @point: instructions pointer
+ * @stack: container where data is stored
+ * @op: bytecode file
+ * Return: void
+*/
+void mainPart(instruction_t *point, stack_t **stack, FILE *op)
 {
 	char *word = NULL, line[1024];
-	int lineNumber = 0 ;
+	int lineNumber = 0, casse = 0, meh = 0;
 
 	while (fgets(line, sizeof(line), op) != NULL)
 	{
 		lineNumber++;
-		if (_isspace(line) == 1 || strlen(line) == 1 || isspace(line) == 1 || strlen(line) == 1)
-		{
+		if (_isspace(line) == 1 || strlen(line) == 1)
 			continue;
-		}
 	word = strtok(line, " ");
-	(word[strlen(word) - 1] == '\n') ? (word[strlen(word) - 1] = '\0') : (word[strlen(word)] = '\0');
+	meh = strlen(word) - 1;
+	(word[meh] == '\n') ? (word[meh] = '\0') : (word[meh] = word[meh]);
 	point = malloc(sizeof(instruction_t));
 	if (point == NULL)
 		mallochandling();
 	point->opcode = word;
 	if (strcmp(point->opcode, "push") == 0)
 	{
-		if (checkfordigits(word = strtok(NULL, " ")) != -1 && strcmp(word, "\n") != 0)
+		word = strtok(NULL, " ");
+		if (checkfordigits(word) != -1 && strcmp(word, "\n") != 0)
 		{
 			pushVal = atoi(word);
-			point->f = &pushi;
+			 point->f = &pushi;
 		}
 		else
-		{
-			fprintf(stderr,"L%d: usage: push integer\n", lineNumber);
-			free(point);
-			free_stack(stack);
-			exit(EXIT_FAILURE);
-		}
+			handleWrongPush(point, stack, lineNumber, casse = 1, op);
 	}
 	else if (strncmp(point->opcode, "pall", 4) == 0)
 		point->f = &palli;
 	else
-	{
-		fprintf(stderr,"L%d: unknown instruction %s\n", lineNumber, point->opcode);
-		free(point);
-		free_stack(stack);
-		exit(EXIT_FAILURE);
-	}
+		handleWrongPush(point, stack, lineNumber, casse = 2, op);
 	if (point->f != NULL)
 		point->f(stack, lineNumber);
 	free(point);
 	}
 }
-void free_stack(stack_t ** stack)
+/**
+ * free_stack - free stack elemnts
+ * @stack: container where data is stored
+ * Return: void
+ */
+void free_stack(stack_t **stack)
 {
 	stack_t *curr = *stack;
 	stack_t *prev = NULL;
@@ -59,7 +61,7 @@ void free_stack(stack_t ** stack)
 		*stack = NULL;
 		return;
 	}
-	while(curr != NULL)
+	while (curr != NULL)
 	{
 		prev = curr->prev;
 		free(curr);
@@ -68,9 +70,32 @@ void free_stack(stack_t ** stack)
 	free(stack);
 	stack = NULL;
 }
-
-void mallochandling()
+/**
+ * mallochandling - handle malloc return
+ * Return: void
+ */
+void mallochandling(void)
 {
 	printf("Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+}
+/**
+ * handleWrongPush - basiclly the main fubciton
+ * @p: instructions pointer
+ * @s: container where data is stored
+ * @N: bytecode file
+ * @c: case of the handleing
+ * @o: file to open
+ * Return: void
+ */
+void handleWrongPush(instruction_t *p, stack_t **s, int N, int c, FILE *o)
+{
+	if (c == 1)
+		fprintf(stderr, "L%d: usage: push integer\n", N);
+	else if (c == 2)
+		fprintf(stderr, "L%d: unknown instruction %s\n", N, p->opcode);
+	free(p);
+	free_stack(s);
+	fclose(o);
 	exit(EXIT_FAILURE);
 }

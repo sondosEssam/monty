@@ -1,4 +1,10 @@
 #include "monty.h"
+/**
+ * main - main function for the project
+ * @ac: no of arguments
+ * @argv: arguments
+ * Return: 0
+*/
 int main(int ac, char **argv)
 {
 	instruction_t *point = NULL;
