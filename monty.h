@@ -38,7 +38,6 @@ void palli(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, int value);
 void pall(stack_t **stack);
 stack_t *getTail(stack_t **stack);
-int countLines(FILE *file);
 int checkfordigits(char *word);
 void mainPart(instruction_t *point, stack_t **stack,FILE *op);
 void free_inst(instruction_t **point);

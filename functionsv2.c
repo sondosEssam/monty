@@ -1,11 +1,10 @@
 #include"monty.h"
 void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 {
-	char *word = NULL, *line = NULL;
-	int lineNumber = 0 , i = 0;
-	size_t read, len;
+	char *word = NULL, line[1024];
+	int lineNumber = 0 ;
 
-	while (read = getline(&line, &len, op) != -1)
+	while (fgets(line, sizeof(line), op) != NULL)
 	{
 		if (strcmp(line, "\n") == 0 || strlen(line) == 1)
 			continue;
@@ -44,15 +43,14 @@ void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 		point->f(stack, lineNumber);
 	free(point);
 	}
-free(line);
 }
 void free_stack(stack_t ** stack)
 {
-	if (*stack == NULL)
-		return;
 	stack_t *curr = *stack;
 	stack_t *prev = NULL;
 
+	if (*stack == NULL)
+		return;
 	if (curr->prev == NULL)
 	{
 		free(curr);
