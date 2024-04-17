@@ -6,9 +6,9 @@ void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 
 	while (fgets(line, sizeof(line), op) != NULL)
 	{
+		lineNumber++;
 		if (strcmp(line, "\n") == 0 || strlen(line) == 1)
 			continue;
-	lineNumber++;
 	word = strtok(line, " ");
 	(word[strlen(word) - 1] == '\n') ? (word[strlen(word) - 1] = '\0') : (word[strlen(word)] = '\0');
 	point = malloc(sizeof(instruction_t));
