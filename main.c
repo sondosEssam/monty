@@ -5,9 +5,9 @@ int main(int ac, char **argv)
 	stack_t **stack = NULL;
 	FILE *op = fopen(argv[1], "r");
 
-	if (ac < 2)
+	if (ac != 2)
 	{
-		fprintf(stdout, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	if (op == NULL)

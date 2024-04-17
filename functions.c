@@ -25,14 +25,19 @@ void pall (stack_t ** stack)
 		curr = curr->prev;
 	}
 }
-stack_t *getTail(stack_t ** stack)
+int _isspace(char *line)
 {
-	stack_t *curr = *stack;
-	if (*stack == NULL)
-		return (NULL);
-	while(curr->next != NULL && curr != NULL)
-		curr = curr->next;
-	return (curr);
+	int i = 0;
+
+	while(line[i] != '\0')
+	{
+		if(line[i] != ' ')
+			return (0);
+		i++;
+		if(line[i] == '\n')
+			break;
+	}
+	return (1);
 }
 int checkfordigits(char *word)
 {
