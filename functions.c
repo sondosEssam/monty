@@ -6,9 +6,10 @@ int pushVal = 0;
  * @value: value inside the stack
  * Return: void
  */
-void push (stack_t **stack, int value)
+void push(stack_t **stack, int value)
 {
 	stack_t *new_node = NULL;
+
 	if (stack == NULL)
 		return;
 	new_node = malloc(sizeof(stack_t));
@@ -18,16 +19,16 @@ void push (stack_t **stack, int value)
 	(*stack == NULL) ? (new_node->prev = NULL) : (new_node->prev = *stack);
 	new_node->next = NULL;
 		(*stack) = new_node;
-	return;
 }
 /**
  * pall - pall val outside stack
  * @stack: container where data is stored
  * Return: void
  */
-void pall (stack_t ** stack)
+void pall(stack_t **stack)
 {
 	stack_t *curr = *stack;
+
 	if (*stack == NULL)
 		return;
 	while (curr != NULL)
@@ -45,12 +46,12 @@ int _isspace(char *line)
 {
 	int i = 0;
 
-	while(line[i] != '\0')
+	while (line[i] != '\0')
 	{
-		if(line[i] != ' ')
+		if (line[i] != ' ')
 			return (0);
 		i++;
-		if(line[i] == '\n')
+		if (line[i] == '\n')
 			break;
 	}
 	return (1);
@@ -64,14 +65,14 @@ int checkfordigits(char *word)
 {
 	int i = 0;
 
-	while((word[i]) != '\0')
+	while ((word[i]) != '\0')
 	{
-		if((word[i] < 48 || word[i] > 57) && word[i] != '-')
+		if ((word[i] < 48 || word[i] > 57) && word[i] != '-')
 		{
 			return (-1);
 		}
 		i++;
-		if(word[i] == '\n')
+		if (word[i] == '\n')
 			break;
 	}
 	return (1);

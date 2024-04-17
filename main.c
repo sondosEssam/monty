@@ -12,7 +12,6 @@ int main(int ac, char **argv)
 	stack_t **stack = NULL;
 	FILE *op = NULL;
 
-	
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
