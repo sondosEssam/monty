@@ -24,7 +24,7 @@ void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 		}
 		else
 		{
-			printf("L<%d>: usage: push integer\n", lineNumber);
+			fprintf(2,"L<%d>: usage: push integer\n", lineNumber);
 			free(point);
 			free_stack(stack);
 			exit(EXIT_FAILURE);
@@ -34,7 +34,7 @@ void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 		point->f = &palli;
 	else
 	{
-		printf("L<%d>: unknown instruction <%s>\n", lineNumber, point->opcode);
+		fprintf(2,"L<%d>: unknown instruction <%s>\n", lineNumber, point->opcode);
 		free(point);
 		free_stack(stack);
 		exit(EXIT_FAILURE);
