@@ -9,7 +9,6 @@ void mainPart(instruction_t * point, stack_t ** stack,FILE *op)
 		lineNumber++;
 		if (_isspace(line) == 1 || strlen(line) == 1 || isspace(line) == 1 || strlen(line) == 1)
 		{
-			printf("im here %d\n", lineNumber);
 			continue;
 		}
 	word = strtok(line, " ");
