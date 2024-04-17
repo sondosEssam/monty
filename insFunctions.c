@@ -21,3 +21,18 @@ void palli(stack_t **stack, unsigned int line_number)
 	line_number = line_number;
 	pall(stack);
 }
+/**
+ * pinti - prints the top
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
+void pinti(stack_t **stack, unsigned int line_number)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}

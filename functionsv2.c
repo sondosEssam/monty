@@ -36,8 +36,9 @@ void mainPart(instruction_t *point, stack_t **stack, FILE *op)
 	}
 	else if (strncmp(point->opcode, "pall", 4) == 0)
 		point->f = &palli;
-	else
-		handleWrongPush(point, stack, lineNumber, casse = 2, op);
+	else if (strcmp(point->opcode, "pint") == 0)
+		point->f = &pinti;
+		else handleWrongPush(point, stack, lineNumber, casse = 2, op);
 	if (point->f != NULL)
 		point->f(stack, lineNumber);
 	free(point);
