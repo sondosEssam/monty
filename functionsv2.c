@@ -60,6 +60,7 @@ void free_stack(stack_t **stack)
 	{
 		free(curr);
 		*stack = NULL;
+		free(stack);
 		return;
 	}
 	while (curr != NULL)
