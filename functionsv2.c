@@ -57,7 +57,13 @@ void free_stack(stack_t **stack)
 	stack_t *prev = NULL;
 
 	if (*stack == NULL)
+	{
+		if (stack == NULL)
 		return;
+		free(stack);
+		stack = NULL;
+		return;
+	}
 	if (curr->prev == NULL)
 	{
 		free(curr);
