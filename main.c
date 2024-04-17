@@ -14,7 +14,6 @@ int main(int ac, char **argv)
 	if (op == NULL)
 	{
 		printf("Error: Can't open file %s\n", argv[1]);
-		fclose(op);
 		exit(EXIT_FAILURE);
 	}
 	stack = malloc(sizeof(stack_t *));
