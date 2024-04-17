@@ -1,5 +1,11 @@
 #include"monty.h"
 int pushVal = 0;
+/**
+ * push - push val inside stack
+ * @stack: container where data is stored
+ * @value: value inside the stack
+ * Return: void
+ */
 void push (stack_t **stack, int value)
 {
 	stack_t *new_node = NULL;
@@ -14,6 +20,11 @@ void push (stack_t **stack, int value)
 		(*stack) = new_node;
 	return;
 }
+/**
+ * pall - pall val outside stack
+ * @stack: container where data is stored
+ * Return: void
+ */
 void pall (stack_t ** stack)
 {
 	stack_t *curr = *stack;
@@ -25,6 +36,11 @@ void pall (stack_t ** stack)
 		curr = curr->prev;
 	}
 }
+/**
+ * _isspace - check if it's only whtite sapces
+ * @line: the line to be checked
+ * Return: int
+ */
 int _isspace(char *line)
 {
 	int i = 0;
@@ -39,6 +55,11 @@ int _isspace(char *line)
 	}
 	return (1);
 }
+/**
+ * checkfordigits - check if the push value is only integers
+ * @word: word to be checked
+ * Return: int
+ */
 int checkfordigits(char *word)
 {
 	int i = 0;

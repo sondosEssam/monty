@@ -1,9 +1,21 @@
 #include"monty.h"
+/**
+ * pushi - final version of push
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
 void pushi(stack_t **stack, unsigned int line_number)
 {
 		push(stack, pushVal);
 	line_number = line_number;
 }
+/**
+ * palli - final version of push
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
 void palli(stack_t **stack, unsigned int line_number)
 {
 	line_number = line_number;

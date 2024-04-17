@@ -5,12 +5,14 @@
  * @argv: arguments
  * Return: 0
 */
+
 int main(int ac, char **argv)
 {
 	instruction_t *point = NULL;
 	stack_t **stack = NULL;
 	FILE *op = NULL;
 
+	
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");

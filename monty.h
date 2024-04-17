@@ -39,7 +39,7 @@ void push(stack_t **stack, int value);
 void pall(stack_t **stack);
 stack_t *getTail(stack_t **stack);
 int checkfordigits(char *word);
-void mainPart(instruction_t *point, stack_t **stack,FILE *op);
+void mainPart(instruction_t *point, stack_t **stack, FILE *op);
 void free_inst(instruction_t **point);
 void free_stack(stack_t **stack);
 void mallochandling();

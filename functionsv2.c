@@ -29,7 +29,7 @@ void mainPart(instruction_t *point, stack_t **stack, FILE *op)
 		if (checkfordigits(word) != -1 && strcmp(word, "\n") != 0)
 		{
 			pushVal = atoi(word);
-			 point->f = &pushi;
+			point->f = &pushi;
 		}
 		else
 			handleWrongPush(point, stack, lineNumber, casse = 1, op);
