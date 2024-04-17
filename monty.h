@@ -46,4 +46,5 @@ void mallochandling();
 int _isspace(char *line);
 void handleWrongPush(instruction_t *p, stack_t **s, int N, int c, FILE *o);
 void pinti(stack_t **stack, unsigned int line_number);
+void popi(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */

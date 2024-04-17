@@ -38,6 +38,8 @@ void mainPart(instruction_t *point, stack_t **stack, FILE *op)
 		point->f = &palli;
 	else if (strcmp(point->opcode, "pint") == 0)
 		point->f = &pinti;
+	else if (strcmp(point->opcode, "pop") == 0)
+		point->f = &popi;
 		else handleWrongPush(point, stack, lineNumber, casse = 2, op);
 	if (point->f != NULL)
 		point->f(stack, lineNumber);
