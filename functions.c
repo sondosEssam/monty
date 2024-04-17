@@ -45,9 +45,13 @@ int checkfordigits(char *word)
 
 	while((word[i]) != '\0')
 	{
-		if(!isdigit(word[i]))
+		if((word[i] < 48 || word[i] > 57) && word[i] != '-')
+		{
 			return (-1);
+		}
 		i++;
+		if(word[i] == '\n')
+			break;
 	}
 	return (1);
 }

@@ -13,7 +13,7 @@ int main(int ac, char **argv)
 	op = fopen(argv[1], "r");
 	if (op == NULL)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	stack = malloc(sizeof(stack_t *));
