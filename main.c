@@ -3,16 +3,17 @@ int main(int ac, char **argv)
 {
 	instruction_t *point = NULL;
 	stack_t **stack = NULL;
-	FILE *op = fopen(argv[1], "r");
+	FILE *op = NULL;
 
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+	op = fopen(argv[1], "r");
 	if (op == NULL)
 	{
-		printf("Error: Can't open file <%s>\n", argv[1]);
+		printf("Error: Can't open file %s\n", argv[1]);
 		fclose(op);
 		exit(EXIT_FAILURE);
 	}
