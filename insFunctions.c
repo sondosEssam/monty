@@ -65,7 +65,7 @@ void swapi(stack_t **stack, unsigned int line_number)
 {
 	int n = 0;
 
-	if ((*stack)->prev == NULL || *stack == NULL)
+	if (stack == NULL || (*stack)->prev == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
