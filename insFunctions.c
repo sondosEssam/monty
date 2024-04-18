@@ -55,3 +55,22 @@ void popi(stack_t **stack, unsigned int line_number)
 	(*stack) = (*stack)->prev;
 	free(rempved);
 }
+/**
+ * swapi - swaps the top two elemtns
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
+void swapi(stack_t **stack, unsigned int line_number)
+{
+	int n = 0;
+
+	if ((*stack)->prev == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = (*stack)->prev->n;
+	(*stack)->prev->n = (*stack)->n;
+	(*stack)->n = n;
+}
