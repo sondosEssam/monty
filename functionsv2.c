@@ -37,12 +37,33 @@ void mainPart(instruction_t *point, stack_t **stack, FILE *op)
 	else if (strncmp(point->opcode, "pall", 4) == 0)
 		point->f = &palli;
 	else if (strcmp(point->opcode, "pint") == 0)
+	{
+		if (*stack == NULL)
+			handleWrongPush(point,stack,lineNumber,casse = 3, op);
 		point->f = &pinti;
+	}
 	else if (strcmp(point->opcode, "pop") == 0)
+	{
+		if (*stack == NULL)
+			handleWrongPush(point, stack, lineNumber, casse = 4, op);
 		point->f = &popi;
+	}
 	else if (strcmp(point->opcode, "swap") == 0)
+	{
+		if (*stack == NULL || (*stack)->prev == NULL)
+			handleWrongPush(point, stack, lineNumber, casse = 5, op);
 		point->f = &swapi;
-		else handleWrongPush(point, stack, lineNumber, casse = 2, op);
+	}
+	else if (strcmp(point->opcode, "add") == 0)
+	{
+		if (*stack == NULL || (*stack)->prev == NULL)
+			handleWrongPush(point, stack, lineNumber, casse = 6, op);
+		point->f = &addi;
+	}
+	else if (strcmp(point->opcode, "nop") == 0)
+		point->f = &nop;
+	else
+	handleWrongPush(point, stack, lineNumber, casse = 2, op);
 	if (point->f != NULL)
 		point->f(stack, lineNumber);
 	free(point);
@@ -106,6 +127,14 @@ void handleWrongPush(instruction_t *p, stack_t **s, int N, int c, FILE *o)
 		fprintf(stderr, "L%d: usage: push integer\n", N);
 	else if (c == 2)
 		fprintf(stderr, "L%d: unknown instruction %s\n", N, p->opcode);
+	else if (c == 3)
+		fprintf(stderr, "L%d: can't pint, stack empty\n", N);
+	else if (c == 4)
+		fprintf(stderr, "L%d: can't pop an empty stack\n", N);
+	else if (c == 5)
+		fprintf(stderr, "L%d: can't swap, stack too short\n", N);
+	else if (c == 6)
+		fprintf(stderr, "L%d: can't add, stack too short\n", N);
 	free(p);
 	free_stack(s);
 	fclose(o);

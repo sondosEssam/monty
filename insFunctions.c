@@ -7,7 +7,7 @@
  */
 void pushi(stack_t **stack, unsigned int line_number)
 {
-		push(stack, pushVal);
+	push(stack, pushVal);
 	line_number = line_number;
 }
 /**
@@ -65,12 +65,48 @@ void swapi(stack_t **stack, unsigned int line_number)
 {
 	int n = 0;
 
-	if (stack == NULL || (*stack)->prev == NULL || *stack == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+	else if ((*stack)->prev == NULL)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 	n = (*stack)->prev->n;
 	(*stack)->prev->n = (*stack)->n;
 	(*stack)->n = n;
+}
+/**
+ * addi - swaps the top two elemtns
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
+void addi(stack_t **stack, unsigned int line_number)
+{
+	int sum = 0;
+	stack_t *repmove = NULL;
+
+	line_number = line_number;
+	sum = (*stack)->prev->n + (*stack)->n;
+	repmove = (*stack);
+	(*stack) = (*stack)->prev;
+	(*stack)->n = sum;
+	free(repmove);
+}
+/**
+ * nop - no operaion
+ * @stack: container where data is stored
+ * @line_number: line number inside the byte code file
+ * Return: void
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+	line_number = line_number;
+	*stack = *stack;
 }

@@ -48,4 +48,6 @@ void handleWrongPush(instruction_t *p, stack_t **s, int N, int c, FILE *o);
 void pinti(stack_t **stack, unsigned int line_number);
 void popi(stack_t **stack, unsigned int line_number);
 void swapi(stack_t **stack, unsigned int line_number);
+void addi(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */
